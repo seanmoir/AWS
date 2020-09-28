@@ -1,23 +1,77 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
-
+class Hash
+  def slice(*keep_keys)
+    h = {}
+    keep_keys.each { |key| h[key] = fetch(key) if has_key?(key) }
+    h
+  end unless Hash.method_defined?(:slice)
+  def except(*less_keys)
+    slice(*keys - less_keys)
+  end unless Hash.method_defined?(:except)
+end
 # All Vagrant configuration is done below. The "2" in Vagrant.configure
 # configures the configuration version (we support older styles for
 # backwards compatibility). Please don't change it unless you know what
 # you're doing.
 Vagrant.configure("2") do |config|
   # The most common configuration options are documented and commented below.
-  # For a complete reference, please see the online documentation at
-  # https://docs.vagrantup.com.
+  # Replave the box with dummy one, bcz AWS does not need a box.
+  config.vm.box = "dummy"
 
-  # Every Vagrant development environment requires a box. You can search for
-  # boxes at https://vagrantcloud.com/search.
-  config.vm.box = "base"
+  config.vm.provider :aws do |aws, override|
+    # just in case if we have not given access to vagrant in our credentials
+    # We can gather the data for these three aws configuration
+    # parameters from environment variables (more secure than
+    # committing security credentials to your Vagrantfile).
+    #
+    #aws.access_key_id = ""
+    #aws.secret_access_key = ""
+    #aws.session_token = ""
 
-  # Disable automatic box update checking. If you disable this, then
-  # boxes will only be checked for updates when the user runs
-  # `vagrant box outdated`. This is not recommended.
-  # config.vm.box_check_update = false
+    # The region for Amazon Educate is fixed. You can see your AWS EC2 browser.
+    aws.region = "us-east-1"
+
+    # These options force synchronisation of files to the VM's
+    # /vagrant directory using rsync, rather than using trying to use
+    # SMB (which will not be available by default).
+    override.nfs.functional = false
+    override.vm.allowed_synced_folder_types = :rsync
+
+    # The keypair_name parameter tells Amazon which public key to use.
+    aws.keypair_name = "part2"
+    # The private_key_path is a file location in your macOS account
+    # (e.g., ~/.ssh/something).
+    override.ssh.private_key_path = "~/.ssh/part2.pem"
+
+    # Here choose Amazon EC2 instance type (t2.micro is cheap).
+    aws.instance_type = "t2.micro"
+
+    # You need to indicate the list of security groups your VM should
+    # be in. Each security group will be of the form "sg-...", and
+    # they should be comma-separated (if you use more than one) within
+    # square brackets.
+    #
+    aws.security_groups = ["sg-0b1c062cae42b31d3"]
+
+    # Vagrant requires the availibility zone and subnet ID.
+    aws.availability_zone = "us-east-1a"
+    aws.subnet_id = "subnet-95fa19d8"
+    #aws.subnet_id = "subnet-3372a96c"
+    #
+    # Choose the AMI (i.e., hard disk image) to use.
+    aws.ami = "ami-0f40c8f97004632f9"
+    # Uncomment the line below only when using an ubuntu AMI.
+    override.ssh.username = "ubuntu"
+  end
+
+  ## That is where tou can enable provisioning with the shell script.
+
+
+
+
+
+
 
   # Create a forwarded port mapping which allows access to a specific port
   # within the machine from a port on the host machine. In the example below,
