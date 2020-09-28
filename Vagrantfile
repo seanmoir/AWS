@@ -25,9 +25,9 @@ Vagrant.configure("2") do |config|
     # parameters from environment variables (more secure than
     # committing security credentials to your Vagrantfile).
     #
-    aws.access_key_id = "ASIAUZZ7DDHN5KPNBFJY"
-    aws.secret_access_key = "iyLFO2qOKnJYX6L4RmFJzjj8YqKkJz0yyljizhE0"
-    aws.session_token = "FwoGZXIvYXdzEBAaDNqgv/5C3Xxca8emFSLLAR7c6m1QxbLfy7tMm9Vfki+sPrtzUrjAHa7/Z/2DbajAAVaq8LDTIJwkOy8svltJQmE2gdE6UEOvHxBA8e9gaYYsvQJ+hModS0Tvdsy7R00rWBZYGMWou2SdQCbGR8VUcGtS0x9klkM1P5UaJ8xKb2d3mCc/+plaNhNTbhumz4uYnwu+87gxiYWcSed3KZPk916KNiQu1xY/upD/kZ+DzypYAd206th5PdNhHFIkd/266nB9lc5fJkkTZqKtAJyG2JoqjxeuWGNeflyAKP6GxvsFMi3+nVpIGmk9t8eZMKA68oyJKuc1R2DB9NzFr+mq7jsy2w9vttoKzV/irojRig8="
+    #aws.access_key_id = ""
+    #aws.secret_access_key = ""
+    #aws.session_token = ""
 
     # The region for Amazon Educate is fixed. You can see your AWS EC2 browser.
     aws.region = "us-east-1"
@@ -39,7 +39,7 @@ Vagrant.configure("2") do |config|
     override.vm.allowed_synced_folder_types = :rsync
 
     # The keypair_name parameter tells Amazon which public key to use.
-    aws.keypair_name = "part"
+    aws.keypair_name = "part2"
     # The private_key_path is a file location in your macOS account
     # (e.g., ~/.ssh/something).
     override.ssh.private_key_path = "~/.ssh/part2.pem"
@@ -52,12 +52,13 @@ Vagrant.configure("2") do |config|
     # they should be comma-separated (if you use more than one) within
     # square brackets.
     #
-    aws.security_groups = ["sg-0ce9d1fdefcbc86a0"]
+    aws.security_groups = ["sg-0b1c062cae42b31d3"]
 
     # Vagrant requires the availibility zone and subnet ID.
     aws.availability_zone = "us-east-1a"
-    #aws.subnet_id = "subnet-95fa19d8"
-
+    aws.subnet_id = "subnet-95fa19d8"
+    #aws.subnet_id = "subnet-3372a96c"
+    #
     # Choose the AMI (i.e., hard disk image) to use.
     aws.ami = "ami-0f40c8f97004632f9"
     # Uncomment the line below only when using an ubuntu AMI.
