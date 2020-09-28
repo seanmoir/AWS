@@ -35,6 +35,9 @@ Vagrant.configure("2") do |config|
     # (e.g., ~/.ssh/something).
     override.ssh.private_key_path = "~/.ssh/part2.pem"
 
+    # Here choose Amazon EC2 instance type (t2.micro is cheap).
+    aws.instance_type = "t2.micro"
+
 
 
 
