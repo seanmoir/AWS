@@ -51,6 +51,12 @@ Vagrant.configure("2") do |config|
 
     # Choose the AMI (i.e., hard disk image) to use.
     aws.ami = "ami-0f40c8f97004632f9"
+    # Uncomment the line below only when using an ubuntu AMI.
+    override.ssh.username = "ubuntu"
+  end
+
+  ## That is where tou can enable provisioning with the shell script.
+
 
 
 
