@@ -49,6 +49,10 @@ Vagrant.configure("2") do |config|
     aws.availability_zone = "us-east-1a"
     #aws.subnet_id = "subnet-95fa19d8"
 
+    # Choose the AMI (i.e., hard disk image) to use.
+    aws.ami = "ami-0f40c8f97004632f9"
+
+
 
 
 
