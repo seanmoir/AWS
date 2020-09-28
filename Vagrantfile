@@ -38,6 +38,14 @@ Vagrant.configure("2") do |config|
     # Here choose Amazon EC2 instance type (t2.micro is cheap).
     aws.instance_type = "t2.micro"
 
+    # You need to indicate the list of security groups your VM should
+    # be in. Each security group will be of the form "sg-...", and
+    # they should be comma-separated (if you use more than one) within
+    # square brackets.
+    #
+    aws.security_groups = ["sg-0ce9d1fdefcbc86a0"]
+
+
 
 
 
