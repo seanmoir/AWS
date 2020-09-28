@@ -1,6 +1,15 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
-
+class Hash
+  def slice(*keep_keys)
+    h = {}
+    keep_keys.each { |key| h[key] = fetch(key) if has_key?(key) }
+    h
+  end unless Hash.method_defined?(:slice)
+  def except(*less_keys)
+    slice(*keys - less_keys)
+  end unless Hash.method_defined?(:except)
+end
 # All Vagrant configuration is done below. The "2" in Vagrant.configure
 # configures the configuration version (we support older styles for
 # backwards compatibility). Please don't change it unless you know what
@@ -16,9 +25,9 @@ Vagrant.configure("2") do |config|
     # parameters from environment variables (more secure than
     # committing security credentials to your Vagrantfile).
     #
-    # aws.access_key_id = "YOUR KEY"
-    # aws.secret_access_key = "YOUR SECRET KEY"
-    # aws.session_token = "SESSION TOKEN"
+    aws.access_key_id = "ASIAUZZ7DDHN5KPNBFJY"
+    aws.secret_access_key = "iyLFO2qOKnJYX6L4RmFJzjj8YqKkJz0yyljizhE0"
+    aws.session_token = "FwoGZXIvYXdzEBAaDNqgv/5C3Xxca8emFSLLAR7c6m1QxbLfy7tMm9Vfki+sPrtzUrjAHa7/Z/2DbajAAVaq8LDTIJwkOy8svltJQmE2gdE6UEOvHxBA8e9gaYYsvQJ+hModS0Tvdsy7R00rWBZYGMWou2SdQCbGR8VUcGtS0x9klkM1P5UaJ8xKb2d3mCc/+plaNhNTbhumz4uYnwu+87gxiYWcSed3KZPk916KNiQu1xY/upD/kZ+DzypYAd206th5PdNhHFIkd/266nB9lc5fJkkTZqKtAJyG2JoqjxeuWGNeflyAKP6GxvsFMi3+nVpIGmk9t8eZMKA68oyJKuc1R2DB9NzFr+mq7jsy2w9vttoKzV/irojRig8="
 
     # The region for Amazon Educate is fixed. You can see your AWS EC2 browser.
     aws.region = "us-east-1"
@@ -30,7 +39,7 @@ Vagrant.configure("2") do |config|
     override.vm.allowed_synced_folder_types = :rsync
 
     # The keypair_name parameter tells Amazon which public key to use.
-    aws.keypair_name = "part2"
+    aws.keypair_name = "part"
     # The private_key_path is a file location in your macOS account
     # (e.g., ~/.ssh/something).
     override.ssh.private_key_path = "~/.ssh/part2.pem"
