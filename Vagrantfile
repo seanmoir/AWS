@@ -29,6 +29,11 @@ Vagrant.configure("2") do |config|
     override.nfs.functional = false
     override.vm.allowed_synced_folder_types = :rsync
 
+    # The keypair_name parameter tells Amazon which public key to use.
+    aws.keypair_name = "part2"
+    # The private_key_path is a file location in your macOS account
+    # (e.g., ~/.ssh/something).
+    override.ssh.private_key_path = "~/.ssh/part2.pem"
 
 
 
