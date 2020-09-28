@@ -7,20 +7,31 @@
 # you're doing.
 Vagrant.configure("2") do |config|
   # The most common configuration options are documented and commented below.
-  # For a complete reference, please see the online documentation at
-  # https://docs.vagrantup.com.
-
-  # Every Vagrant development environment requires a box. You can search for
-  # boxes at https://vagrantcloud.com/search.
-  #config.vm.box = "base"
   # Replave the box with dummy one, bcz AWS does not need a box.
   config.vm.box = "dummy"
 
+  config.vm.provider :aws do |aws, override|
+    # just in case if we have not given access to vagrant in our credentials
+    # We can gather the data for these three aws configuration
+    # parameters from environment variables (more secure than
+    # committing security credentials to your Vagrantfile).
+    #
+    # aws.access_key_id = "YOUR KEY"
+    # aws.secret_access_key = "YOUR SECRET KEY"
+    # aws.session_token = "SESSION TOKEN"
 
-  # Disable automatic box update checking. If you disable this, then
-  # boxes will only be checked for updates when the user runs
-  # `vagrant box outdated`. This is not recommended.
-  # config.vm.box_check_update = false
+    # The region for Amazon Educate is fixed. You can see your AWS EC2 browser.
+    aws.region = "us-east-1"
+
+    # These options force synchronisation of files to the VM's
+    # /vagrant directory using rsync, rather than using trying to use
+    # SMB (which will not be available by default).
+    override.nfs.functional = false
+    override.vm.allowed_synced_folder_types = :rsync
+
+
+
+
 
   # Create a forwarded port mapping which allows access to a specific port
   # within the machine from a port on the host machine. In the example below,
