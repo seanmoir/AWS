@@ -45,6 +45,10 @@ Vagrant.configure("2") do |config|
     #
     aws.security_groups = ["sg-0ce9d1fdefcbc86a0"]
 
+    # Vagrant requires the availibility zone and subnet ID.
+    aws.availability_zone = "us-east-1a"
+    #aws.subnet_id = "subnet-95fa19d8"
+
 
 
 
