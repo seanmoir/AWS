@@ -37,7 +37,7 @@ Vagrant.configure("2") do |config|
       aws.availability_zone = "us-east-1a"
       aws.subnet_id = "subnet-3372a96c"
 
-      aws.ami = "ami-013da1cc4ae87618c"
+      aws.ami = "ami-0c43b23f011ba5061"
 
       override.ssh.username = "ubuntu"
       override.vm.provision :shell, :path => "vm_setup/apache_prod.sh"
@@ -65,7 +65,7 @@ Vagrant.configure("2") do |config|
       aws.availability_zone = "us-east-1a"
       aws.subnet_id = "subnet-3372a96c"
 
-      aws.ami = "ami-013da1cc4ae87618c"
+      aws.ami = "ami-0c43b23f011ba5061"
 
       override.ssh.username = "ubuntu"
       override.vm.provision :shell, :path => "vm_setup/apache_dev.sh"
