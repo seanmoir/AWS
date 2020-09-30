@@ -1,7 +1,8 @@
 echo "user web server has started"
+
 apt-get update
     
-apt-get install -y apache2 php libapache2-mod-php php-mysql
+apt-get install -y apache2 php libapache2-mod-php php-mysql mysql-client
 # Change VM's webserver's configuration to use shared folder.
 cp /vagrant/conf/user.conf /etc/apache2/sites-available/
 # activate website configuration

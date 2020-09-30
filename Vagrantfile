@@ -27,15 +27,15 @@ Vagrant.configure("2") do |config|
       override.nfs.functional = false
       override.vm.allowed_synced_folder_types = :rsync
 
-      aws.keypair_name = "part2"
-      override.ssh.private_key_path = "~/.ssh/part2.pem"
+      aws.keypair_name = "cosc349-labs"
+      override.ssh.private_key_path = "D:/uni/cosc/349/ssh_keys/cosc349-labs.pem"
 
       aws.instance_type = "t2.micro"
 
-      aws.security_groups = ["sg-0b1c062cae42b31d3"]
+      aws.security_groups = ["sg-0382f522d54553d2e"]
 
       aws.availability_zone = "us-east-1a"
-      aws.subnet_id = "subnet-9777aff1"
+      aws.subnet_id = "subnet-3372a96c"
 
       aws.ami = "ami-0c43b23f011ba5061"
 
@@ -55,15 +55,15 @@ Vagrant.configure("2") do |config|
       override.nfs.functional = false
       override.vm.allowed_synced_folder_types = :rsync
 
-      aws.keypair_name = "part2"
-      override.ssh.private_key_path = "~/.ssh/part2.pem"
+      aws.keypair_name = "cosc349-labs"
+      override.ssh.private_key_path = "D:/uni/cosc/349/ssh_keys/cosc349-labs.pem"
 
       aws.instance_type = "t2.micro"
 
-      aws.security_groups = ["sg-0b1c062cae42b31d3"]
+      aws.security_groups = ["sg-0382f522d54553d2e"]
 
       aws.availability_zone = "us-east-1a"
-      aws.subnet_id = "subnet-9777aff1"
+      aws.subnet_id = "subnet-3372a96c"
 
       aws.ami = "ami-0c43b23f011ba5061"
 
