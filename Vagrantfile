@@ -47,7 +47,7 @@ Vagrant.configure("2") do |config|
       # Choose the hard disk image to use.
       aws.ami = "ami-0c43b23f011ba5061"
       
-      # Only when using ubantu, so the vagrant connects using this name.
+      # Set username to default ubuntu name, call provisioning script
       override.ssh.username = "ubuntu"
       override.vm.provision :shell, :path => "vm_setup/apache_prod.sh"
     end
@@ -74,11 +74,14 @@ Vagrant.configure("2") do |config|
       # Security group
       aws.security_groups = ["sg-0382f522d54553d2e"]
 
+      # Choose the hard disk image to use.
       aws.availability_zone = "us-east-1a"
+      # The subnet id.
       aws.subnet_id = "subnet-3372a96c"
 
       aws.ami = "ami-0c43b23f011ba5061"
 
+      # Set username to default ubuntu name, call provisioning script
       override.ssh.username = "ubuntu"
       override.vm.provision :shell, :path => "vm_setup/apache_dev.sh"
     end
