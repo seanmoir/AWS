@@ -24,7 +24,7 @@ Vagrant.configure("2") do |config|
       aws.tags = { 'Name' => 'Production Web Server' }
       # The region for Amazon Educate.
       aws.region = "us-east-1"
-      # To force synchronization of the files to the VM's
+      # Disable NFS, use rsync to copy files to cloud
       override.nfs.functional = false
       override.vm.allowed_synced_folder_types = :rsync
       
@@ -61,7 +61,7 @@ Vagrant.configure("2") do |config|
       aws.tags = { 'Name' => 'Developer Web Server' }
       # The region for amazon educate.
       aws.region = "us-east-1"
-      #  To force synchronization of the files to the VM's
+      # Disable NFS, use rsync to copy files to cloud
       override.nfs.functional = false
       override.vm.allowed_synced_folder_types = :rsync
       # Tells amazon which key to use.
