@@ -1,6 +1,6 @@
 <?php 
 //connect to the databse
-  $db_host   = 'dbserver.cm3wqgtff5e6.us-east-1.rds.amazonaws.com';
+  $db_host   = 'database-1.cvuizbwdlndo.us-east-1.rds.amazonaws.com';
   $db_name   = 'todo';
   $db_user   = 'webuser';
   $db_passwd = 'insecure_db_pw';
