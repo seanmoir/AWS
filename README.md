@@ -1,5 +1,5 @@
 # AWS
-Deploying EC2 instances into AWS using vagrant.
+Deploying EC2 instances into AWS using vagrant, Includes script to setup a DB and accounts in an RDS instance
 
 
 Required software, vagrant, vagrant-aws plugin
